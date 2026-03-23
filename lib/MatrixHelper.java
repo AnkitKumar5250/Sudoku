@@ -14,7 +14,7 @@ public final class MatrixHelper {
    * @param addendRowIndex the index of the row to not store the sum
    * @param sumRowIndex the index of the row to store the sum
    */
-  public void addRow(int[][] matrix, int addendRowIndex, int sumRowIndex) {
+  public static void addRow(int[][] matrix, int addendRowIndex, int sumRowIndex) {
     if (addendRowIndex < 0 || sumRowIndex < 0 || addendRowIndex >= matrix.length || sumRowIndex >= matrix.length) throw new UnsupportedOperationException("Cannot add out-of-bounds rows!");
 
     int[] addendRow = matrix[addendRowIndex];
@@ -34,7 +34,7 @@ public final class MatrixHelper {
    * @param row1Index the index of the first row
    * @param row2Index the index of the second row
    */
-  public void swapRows(int[][] matrix, int row1Index, int row2Index) {
+  public static void swapRows(int[][] matrix, int row1Index, int row2Index) {
     if (row1Index < 0 || row2Index < 0 || row1Index >= matrix.length || row2Index >= matrix.length) throw new UnsupportedOperationException("Cannot swap out-of-bounds rows!");
 
     int[] row1 = matrix[row1Index];
@@ -57,7 +57,7 @@ public final class MatrixHelper {
    * @param rowIndex the index of the row to scale
    * @param scalar the scalar to apply to the row
    */
-  public void scaleRow(int[][] matrix, int rowIndex, int scalar) {
+  public static void scaleRow(int[][] matrix, int rowIndex, int scalar) {
     int[] row = matrix[rowIndex];
     if (row == null) throw new UnsupportedOperationException("Cannot scale null rows!");
 
