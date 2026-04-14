@@ -6,12 +6,40 @@ public final class Sudoku {
   /** The size of each individual tile (rows/columns within a single tile) */
   private static final int WIDTH = 3;
 
+  /** The digits in the Sudoku */
+  private static final int[] DIGITS = {1,2,3,4,5,6,7,8,9};
+
+  /** Buffer to store the board (row, column). */
   private static final int[][] boardBuffer = new int[SIZE][SIZE];
 
   /** Inaccessible constructor. */
   private Sudoku() {}
 
-  public static void generate(int seed) {}
+  public static void generate() {
+    int[] firstRow = scramble(DIGITS.clone());
+    
+
+  }
+
+  /**
+   * Swaps each element in the array with another element randomly.
+   * @param array the array to scramble
+   * @return the array that has been scrambled
+   */
+  public static int[] scramble(int[] array) {
+    for (int index = 0; index < array.length; index++) {
+      int randomIndex = (int) (Math.random() * array.length);
+
+      // SWAP ELEMENTS
+      int element = array[index];
+      int randomElement = array[randomIndex];
+
+      array[randomIndex] = element;
+      array[index] = randomElement;
+    }
+
+    return array;
+  }
 
   /** Clears cache and board buffer. */
   public static void clear() {

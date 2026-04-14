@@ -6,7 +6,6 @@ public final class MatrixHelper {
   /** Inaccessible constructor. */
   private MatrixHelper() {}
 
-
   /**
    * Adds the values of one row to the values of another row.
    * 
