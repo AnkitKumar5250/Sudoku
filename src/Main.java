@@ -1,7 +1,7 @@
-import lib.MatrixHelperTest;
-
 public class Main {
   public static void main(String[] args) {
-    MatrixHelperTest.run();
+    SudokuGenerator generator = new SudokuGenerator();
+    while (!SudokuGenerator.isValid(generator.board())) generator.generate();
+    generator.printBoard();
   }
 }
