@@ -11,6 +11,12 @@ public final class SudokuGenerator {
   /** The randomizer used to generate the puzzle. */
   private final Random random = new Random();
 
+  /** StringBuilder used to print out Sudoku boards. */
+  private final StringBuilder boardPrinter = new StringBuilder();
+
+  /** Used in 'printBoard' method. */
+  private static final String separator = " " + "-".repeat(SIZE * 2 + BOX_SIZE * 2 - 1) + "\n";
+
   /** The base solution to edit. */
   private final int[][] boardBuffer = {
       { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
@@ -239,25 +245,21 @@ public final class SudokuGenerator {
    * then stored in a buffer and printed to the console with this method.
    */
   public void printBoard() {
-    // UTILITY RUNNABLE TO HELP GENERATE SEPARATOR.
-    Runnable makeSeparator = () -> System.out.print(" " + "-".repeat(SIZE * 2 + BOX_SIZE * 2 - 1) + "\n");
-    makeSeparator.run();
+    boardPrinter.setLength(0);
+    boardPrinter.append(separator);
 
-    // BOARD ROWS
     for (int row = 0; row < SIZE; row++) {
-      // BOXES IN ROW
-      for (int tile = 0; tile < BOX_SIZE; tile++) {
-        System.out.print("| ");
-
-        // NUMBERS IN TILE
+      for (int boxRow = 0; boxRow < BOX_SIZE; boxRow++) {
+        boardPrinter.append("| ");
         for (int number = 0; number < BOX_SIZE; number++)
-          System.out.print(boardBuffer[row][number + tile * BOX_SIZE] + " ");
+          boardPrinter.append(boardBuffer[row][number + boxRow * BOX_SIZE]).append(" ");
       }
 
-      // NEW LINE (ADD SEPARATOR FOR NEW COLUMN BOXES)
-      System.out.print("|\n");
+      boardPrinter.append("|\n");
       if ((row + 1) % BOX_SIZE == 0)
-        makeSeparator.run();
+        boardPrinter.append(separator);
     }
+
+    System.out.print(boardPrinter);
   }
 }
